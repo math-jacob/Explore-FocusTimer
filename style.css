@@ -1,0 +1,214 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: clamp(40%, 1% +2vw, 62.5%);
+
+  --hue: 194;
+  --bg-color: hsla(var(--hue), 5%, 7%, 1);
+  --text-color: hsla(var(--hue), 40%, 98%, 1);
+  --primary-color: hsla(var(--hue), 100%, 63%, 1);
+  --button-secondary: hsla(var(--hue), 40%, 98%, 1);
+  --card-bg-color: hsla(var(--hue), 9%, 89%, 1);
+  --card-selected-bg-color: hsla(var(--hue), 97%, 31%, 1);
+}
+
+html.light {
+  --primary-color: hsla(var(--hue), 97%, 31%, 1);
+  --bg-color: hsla(var(--hue), 40%, 98%, 1);
+  --text-color: hsla(var(--hue), 5%, 7%, 1);
+}
+
+html.light .ph-sun,
+html:not(.light) .ph-moon {
+  display: none;
+}
+
+#toggle-mode {
+  position: absolute;
+  right: 3.2rem;
+  top: 3.2rem;
+  font-size: 3.2rem;
+  line-height: 0;
+
+  color: var(--text-color);
+}
+
+.sr-only {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+
+  margin: -1px;
+  padding: 0px;
+  border: 0;
+  appearance: none;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+
+  display: grid;
+  height: 100vh;
+  place-content: center;
+}
+
+#app {
+  display: flex;
+  align-items: center;
+  gap: 19.2rem;
+}
+
+.flex {
+  display: flex;
+}
+
+#timer {
+  font-size: 9.6rem;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+#controls {
+  margin-top: 1.6rem;
+  padding: 1.2rem 2.4rem;
+  gap: 1.6rem;
+}
+
+html.light .secondary {
+  color: var(--text-color);
+}
+
+button {
+  background-color: transparent;
+  border: 0;
+  color: var(--primary-color);
+
+  cursor: pointer;
+
+  font-size: 4rem;
+}
+
+.secondary {
+  color: var(--button-secondary);
+}
+
+/* controls */
+
+.running .ph-play-circle,
+.running .ph-timer,
+.music-on .ph-speaker-none,
+html:not(.running) .ph-pause-circle, 
+html:not(.running) .ph-stop-circle, 
+html:not(.music-on) .ph-speaker-high {
+  display: none;
+}
+
+/* Versão 2 */
+
+#sound-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+#volume {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+}
+
+#timer-controls-wrapper {
+  flex-direction: column;
+  align-items: center;
+}
+
+#cards-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.2rem;
+}
+
+.card {
+  width: 12.8rem;
+  height: 14.2rem;
+  border-radius: 2.4rem;
+  background-color: var(--card-bg-color);
+
+  display: grid;
+  place-content: center;
+
+  cursor: pointer;
+}
+
+.card img {
+  pointer-events: none;
+  user-select: none;
+}
+
+.selected {
+  background-color: var(--card-selected-bg-color);
+}
+
+.selected img {
+  filter: invert(92%) sepia(0%) saturate(30%) hue-rotate(130deg) brightness(106%) contrast(106%);
+}
+
+/********** Range Input Styles **********/
+
+/* ********** Baseline, reset styles ********** */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Removes default focus */
+input[type="range"]:focus {
+  outline: none;
+}
+
+/******** Chrome, Safari, Opera and Edge Chromium styles ********/
+/* slider track */
+input[type="range"]::-webkit-slider-runnable-track {
+  background-color: var(--card-selected-bg-color);
+  border-radius: 0.5rem;
+  height: 0.5rem;
+}
+
+/* slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  margin-top: -4px; /* Centers thumb on the track */
+  background-color: var(--text-color);
+  border-radius: 0.5rem;
+  height: 1rem;
+  width: 1rem;
+}
+
+/*********** Firefox styles ***********/
+/* slider track */
+input[type="range"]::-moz-range-track {
+  background-color: var(--card-selected-bg-color);
+  border-radius: 0.5rem;
+  height: 0.5rem;
+}
+
+/* slider thumb */
+input[type="range"]::-moz-range-thumb {
+  background-color: var(--text-color);
+  border: none; /*Removes extra border that FF applies*/
+  border-radius: 0.5rem;
+  height: 1rem;
+  width: 1rem;
+}
